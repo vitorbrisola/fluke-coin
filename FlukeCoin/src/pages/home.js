@@ -10,13 +10,12 @@ import React, {Component} from 'react';
 import { 
     SafeAreaView,
     StyleSheet,
-    Button,
     FlatList,
     View,
     Text,
 } from 'react-native';
 
-
+import TabRender from './utils'
 
 
 const DATA = [
@@ -65,10 +64,9 @@ export default class HomeScreen extends Component {
                     renderItem={({ item }) => <Item data={item.name} />}
                     keyExtractor={item => item.id}
                 />
-                <Button
-                    title="Explorer"
-                    onPress={() => this.props.navigation.navigate('Explorer')}
-                />
+                <View>
+                    {TabRender(this.props)}
+                </View>
             </SafeAreaView>
         );
     }

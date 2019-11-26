@@ -16,6 +16,7 @@ import {
     Text,
 } from 'react-native';
 
+import TabRender from './utils'
 
 const DATA = [
     {id: '5', name: 'Flukeco'},
@@ -39,23 +40,7 @@ function Item({ data }){
     );
 };
 
-function TabRender( props ){
-    return(
-        <View
-            style={styles.tabContainer}>
-            <Button
-                style={styles.screenButton}
-                title="Home"
-                onPress={() => props.navigation.navigate('Home')}
-            />
-            <Button
-                title="Explorer"
-                onPress={() => props.navigation.navigate('Explorer')}
-            />
-        </View>
-        
-    );
-}; 
+
 
 //const App: () => React$Node = () => {
 export default class ExplorerScreen extends Component {
@@ -116,13 +101,6 @@ const styles = StyleSheet.create({
         borderWidth: 2, 
         borderColor: 'green',
         borderRadius: 5,
-    },
-    tabContainer:{
-        width: '100%',
-         
-    },
-    screenButton:{
-        flexDirection:"row",
     },
 });
 
