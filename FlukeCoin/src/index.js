@@ -3,6 +3,6 @@
  */
 
 //import {AppRegistry} from 'react-native';
-import App from './pages/epa';
+import App from './router';
 
 export default App;
