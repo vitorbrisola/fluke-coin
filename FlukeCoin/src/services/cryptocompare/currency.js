@@ -28,4 +28,5 @@ export default function currenciesPricesQuery(currencies_names,converted_currenc
     return query;
 };
 
+function loadCurrenciesPrices(currencies,)
 

@@ -32,12 +32,14 @@ const DATA = [
 ];
 
 
-function Item({ data }){
+function Item({item}){
     return(
         <View 
             style={styles.dualContainer}>
-            <View style={styles.coinContainer}><Text>{data}</Text></View>
-            <View style={styles.coinContainer}><Text>{data}</Text></View>         
+            <View style={styles.coinContainer}>
+                <Text>{item}</Text>
+            </View>
+            <View style={styles.coinContainer}><Text>{item}</Text></View>         
         </View>
 
     );
@@ -55,37 +57,47 @@ export default class ExplorerScreen extends Component {
     };
 
     dataPreprocessing = (data) => {
-        newData = [];
+        newData = new Array;
         counter = 0;
-        for (crypto in data){
+        console.log({"NewData": newData,"data":data});
+
+        for (var crypto in data){
+
             newData.push({
                 id: String(counter++),
                 name: String(crypto),
-                price: String(crypto.USD)
+                price: String(data[crypto]["USD"])
             });
         };
+        console.log({"NewData": newData})
 
-        return newData
+        return (newData);
     };
 
-    //loadData = async ( startDate = new Date()) => {};
-    loadData = () => {
+    loadData =  () => {
         const cur = ['BTC','ETH'];
         const conv = ['USD','EUR','BRL']
 
+        data = null
+
         // api prices loading
         query = currenciesPriceQuery(cur,conv);
+        console.log(query)
         //console.log(CryptoApi.baseURL);
-        response = CryptoApi.get(query)
+        console.log('get started')
+        CryptoApi.get(query)
+            .then(response => {
+                data = response.data;
+                console.log({'data':data});
+                data = this.dataPreprocessing(data);
+                console.log({'data_preprocessed':data});
+                this.setState({ data: data }); 
+                //console.log({'response':response,'data':data});
+            })
             .catch(error => { console.log(error.message)});
-        data = response.data;
-        console.log({'response':response,'data':data});
-
-        // data setting
-        data = this.dataPreprocessing(data);
-        this.setState({data:data});
+        console.log('get finished')
+               
     };
-
     
 
     render() {
