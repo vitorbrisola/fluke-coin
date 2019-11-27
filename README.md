@@ -14,3 +14,8 @@ The intent of this application is to make easy the tracking of users preferred c
 >- Fácil vizualização da muança de preço e preço atual de cryptomoedas escolhidas pelo usuário.
 >- Fácil busca e sugestões de novas cryptomoedas.
 
+### Currency Display
+
+### User Screen Navigation
+
+## API Communication

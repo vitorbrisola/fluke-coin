@@ -16,7 +16,7 @@ import {
     Text,
 } from 'react-native';
 
-import TabRender from './utils'
+import BottomTab from './utils'
 
 const DATA = [
     {id: '5', name: 'Flukeco'},
@@ -39,8 +39,6 @@ function Item({ data }){
 
     );
 };
-
-
 
 //const App: () => React$Node = () => {
 export default class ExplorerScreen extends Component {
@@ -69,7 +67,7 @@ export default class ExplorerScreen extends Component {
                     keyExtractor={item => item.id}
                 />
                 <View>
-                    {TabRender(this.props)}
+                    {BottomTab(this.props)}
                 </View>
                 
             </SafeAreaView>
@@ -84,24 +82,30 @@ const styles = StyleSheet.create({
         //marginTop: Constants.statusBarHeight,
     },
     dualContainer: {
+        //shape
         height: 100,
-        padding: 20,
+        //position
         marginHorizontal: 0,
         marginVertical: 15,
+        //content
+        padding: 20,
         flexDirection:"row",
     },
     coinContainer: {
+        // shape
         height: 75,
         width: 140,
-        padding: 0,
-        alignItems: 'center',
+        borderWidth: 2, 
+        borderRadius: 5,
+        // position
         marginHorizontal: 10,
         marginVertical: 0,
+        // color
         backgroundColor: '#FFFF', 
-        borderWidth: 2, 
         borderColor: 'green',
-        borderRadius: 5,
+        // content
+        padding: 0,
+        alignItems: 'center',
     },
 });
 
-//export default App;

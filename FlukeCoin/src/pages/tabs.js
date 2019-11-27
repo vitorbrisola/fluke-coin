@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 
 
-export default function TabRender( props ){
+export default function BottomTab( props ){
     return(
         <View
             style={styles.tabContainer}>
@@ -36,16 +36,6 @@ export default function TabRender( props ){
         
     );
 }; 
-/*
-<Button
-title="Home"
-onPress={() => props.navigation.navigate('Home')}
-/>
-<Button
-title="Explorer"
-onPress={() => props.navigation.navigate('Explorer')}
-/>
-*/
 
 const styles = StyleSheet.create({
     tabContainer:{
@@ -57,7 +47,6 @@ const styles = StyleSheet.create({
         height: 45,
         width: '50%',
         justifyContent: 'center',
-        textAlignVertical: 'center',
         borderWidth:3,
         borderColor: 'black'
     },
