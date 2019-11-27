@@ -15,8 +15,8 @@ import {
     Text,
 } from 'react-native';
 
-import BottomTab from './tabs'
-
+import BottomTab from './components/tabs'
+import CryptoApi from '../services/cryptocompare/connect'
 
 const DATA = [
     {id: '5', name: 'Flukeco'},
@@ -46,6 +46,7 @@ export default class HomeScreen extends Component {
     };
 
     componentDidMount(){
+        console.log('Loading data...')
         this.loadData();
     };
 

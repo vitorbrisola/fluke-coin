@@ -6,7 +6,7 @@
  * @flow
  */
 
-import React, {Component} from 'react';
+import React,{useEffect, Component} from 'react';
 import { 
     SafeAreaView,
     StyleSheet,
@@ -15,8 +15,11 @@ import {
     View,
     Text,
 } from 'react-native';
+import axios from 'axios'
 
-import BottomTab from './utils'
+import BottomTab from './components/tabs'
+import currenciesPriceQuery from '../services/cryptocompare/currency'
+import CryptoApi from '../services/cryptocompare/connect'
 
 const DATA = [
     {id: '5', name: 'Flukeco'},
@@ -51,10 +54,39 @@ export default class ExplorerScreen extends Component {
         this.loadData();
     };
 
+    dataPreprocessing = (data) => {
+        newData = [];
+        counter = 0;
+        for (crypto in data){
+            newData.push({
+                id: String(counter++),
+                name: String(crypto),
+                price: String(crypto.USD)
+            });
+        };
+
+        return newData
+    };
+
     //loadData = async ( startDate = new Date()) => {};
     loadData = () => {
-        this.setState({data:DATA})
+        const cur = ['BTC','ETH'];
+        const conv = ['USD','EUR','BRL']
+
+        // api prices loading
+        query = currenciesPriceQuery(cur,conv);
+        //console.log(CryptoApi.baseURL);
+        response = CryptoApi.get(query)
+            .catch(error => { console.log(error.message)});
+        data = response.data;
+        console.log({'response':response,'data':data});
+
+        // data setting
+        data = this.dataPreprocessing(data);
+        this.setState({data:data});
     };
+
+    
 
     render() {
         return (
