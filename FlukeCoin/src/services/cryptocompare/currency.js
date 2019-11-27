@@ -1,4 +1,6 @@
 import KEY from '../../private/keys'
+import {CryptoApi,cryptoConnect} from './connect'
+
 
 
 
@@ -28,5 +30,23 @@ export default function currenciesPricesQuery(currencies_names,converted_currenc
     return query;
 };
 
-function loadCurrenciesPrices(currencies,)
+function dataPreprocessing(data){
+    newData = new Array;
+    counter = 0;
+    console.log({"NewData": newData,"data":data});
+
+    for (var crypto in data){
+
+        newData.push({
+            id: String(counter++),
+            name: String(crypto),
+            price: String(data[crypto]["USD"])
+        });
+    };
+    console.log({"NewData": newData})
+
+    return (newData);
+};
+
+
 

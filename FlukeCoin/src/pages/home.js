@@ -16,7 +16,7 @@ import {
 } from 'react-native';
 
 import BottomTab from './components/tabs'
-import CryptoApi from '../services/cryptocompare/connect'
+import CurrencyManager from '../services/cryptocompare/manager'
 
 const DATA = [
     {id: '5', name: 'Flukeco'},
@@ -43,16 +43,34 @@ export default class HomeScreen extends Component {
 
     state = {
         data: [],
+        manager: null,
+        prices: [],
     };
 
-    componentDidMount(){
+    componentDidMount = async () => {
+        console.log('Init Manager...')
+        const cur = ['BTC','ETH'];
+        const conv = ['USD','EUR','BRL'];
+
+        newManager = new CurrencyManager(cur,conv);
+        if (this.state.manager == null){
+            console.log('new manager');
+            await this.setState({manager:newManager})};
+        console.log({'manager':this.state.manager})
         console.log('Loading data...')
         this.loadData();
     };
 
     //loadData = async ( startDate = new Date()) => {};
     loadData = () => {
-        this.setState({data:DATA})
+        if(this.state.prices.length == 0){
+            console.log('Novos dados');
+            data = this.state.manager.loadPrices();
+        }else{
+            console.log('Dados ja carregados');
+            data = this.state.prices;
+        };
+        this.setState({data:data});
     };
 
     render() {

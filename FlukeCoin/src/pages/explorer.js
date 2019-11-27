@@ -15,7 +15,6 @@ import {
     View,
     Text,
 } from 'react-native';
-import axios from 'axios'
 
 import BottomTab from './components/tabs'
 import currenciesPriceQuery from '../services/cryptocompare/currency'
