@@ -18,7 +18,7 @@ import {
 
 // render components
 import BottomTab from './components/tabs'
-import CoinDisplay from './components/coin'
+import {CoinDisplay,CoinsList} from './components/coin'
 // services
 import CurrencyManager from '../services/cryptocompare/manager'
 
@@ -65,12 +65,7 @@ export default class ExplorerScreen extends Component {
             <SafeAreaView 
                 contentInsetAdjustmentBehavior="automatic"
                 style={styles.container}>
-                <FlatList
-                    data={this.state.data}
-                    renderItem={({ item }) => 
-                    <View style={styles.coinContainer}><CoinDisplay coinInfo={item.name} /></View>}
-                    keyExtractor={item => item.id}
-                />
+                {CoinsList(this.state.data)}
                 <View>
                     {BottomTab(this.props)}
                 </View>

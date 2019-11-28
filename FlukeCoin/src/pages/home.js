@@ -49,10 +49,11 @@ export default class HomeScreen extends Component {
             console.log(data);
         }else{
             console.log('Dados ja carregados');
-            data = this.state.prices;
+            data = this.state.data;
         };
         this.setState({data:data});
     };
+    
 
     render() {
         return (
@@ -61,9 +62,13 @@ export default class HomeScreen extends Component {
                 style={styles.container}>
                 <FlatList
                     data={this.state.data}
-                    renderItem={({ item }) => 
-                    <View style={styles.coinContainer}><CoinDisplay coinInfo={item.name} /></View>}
-                    keyExtractor={item => item.id}
+                    keyExtractor={(item, key) => key.toString()}
+                    //renderItem={CoinDisplay}
+                    renderItem={({item}) =>
+                        <View style={styles.coinContainer}>
+                            <CoinDisplay name={item.name} price={item.price}/>
+                        </View>
+                    }
                 />
                 <View>
                     {BottomTab(this.props)}
@@ -76,7 +81,7 @@ export default class HomeScreen extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1, // make the container fill the screen
-        backgroundColor: 'darkgreen',
+        backgroundColor: '#3333',
         //marginTop: Constants.statusBarHeight,
     },
     coinContainer: {
