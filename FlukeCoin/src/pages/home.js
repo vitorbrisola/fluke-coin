@@ -10,7 +10,6 @@ import React, {Component} from 'react';
 import { 
     SafeAreaView,
     StyleSheet,
-    FlatList,
     View,
     Text,
 } from 'react-native';
@@ -61,9 +60,7 @@ export default class HomeScreen extends Component {
                 contentInsetAdjustmentBehavior="automatic"
                 style={styles.container}>
                 {CoinsList(this.state.data)}
-                <View>
-                    {BottomTab(this.props)}
-                </View>
+
             </SafeAreaView>
         );
     }

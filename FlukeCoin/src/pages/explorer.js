@@ -64,11 +64,7 @@ export default class ExplorerScreen extends Component {
                 contentInsetAdjustmentBehavior="automatic"
                 style={styles.container}>
                 {CoinsList(this.state.data)}
-                <View>
-                    {BottomTab(this.props)}
-                </View>
-                
-            </SafeAreaView>
+                </SafeAreaView>
         );
     }
 };

@@ -33,6 +33,8 @@ This is an list of the main tasks and components that were crucial in the develo
 - [x] Build initial _Explorer_ screen template.
 - [x] Connect screen with __react navigation__.
     - [x] Build _Bottom Tab_ for screen navigation.
+    - [x] Use __Tab Navigator__
+    - [ ] Use __Font Awesome__
 - [x] Connect to __cryptocompare API__ using __Axios__.
     - [ ] Build data local cache.
 - [ ] Build _sign in_ screen.
@@ -43,17 +45,19 @@ This is an list of the main tasks and components that were crucial in the develo
 - [ ] Add user data to _upper tab_.
 >__[PT-BR]__ 
 > Essa é uma lista com as pricipais tarefas e componentes essenciais no processo de desenvolvimento.
->1. [x] Inicializar Projeto (Git e React-native).
->2. [x] Construir Template Inicial da tela _Home_.
->3. [x] Construir Template padrão da tela _Explorer_.
->4. [x] Conectar telas com react navigator.
->4.1. [x] Construir _Bottom Tab_ para navegar entre telas.
->5. [x] Conectar com API.
->5.1. [ ] Construir Cache de dados.
->6. [ ] Construir Tela de Autenticação.
->7. [ ] Construir Tela de Cadastro.
->8. [ ] Salvar Moedas personalizadas por usuário.
->9. [ ] Adicionar Notificações
->10. [ ] Adicionar Informações de usuário
+>- [x] Inicializar Projeto (Git e React-native).
+>- [x] Construir Template Inicial da tela _Home_.
+>- [x] Construir Template padrão da tela _Explorer_.
+>- [x] Conectar telas com react navigator.
+>   - [x] Construir _Bottom Tab_ para navegar entre telas.
+>   - [x] Usar __Tab Navigator__
+>   - [ ] Usar __Font Awesome__
+>- [x] Conectar com API.
+>   - [ ] Construir Cache de dados.
+>- [ ] Construir Tela de Autenticação.
+>- [ ] Construir Tela de Cadastro.
+>- [ ] Salvar Moedas personalizadas por usuário.
+>- [ ] Adicionar Notificações
+>- [ ] Adicionar Informações de usuário
 
 
