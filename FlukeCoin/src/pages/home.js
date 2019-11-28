@@ -66,6 +66,7 @@ export default class HomeScreen extends Component {
         if(this.state.prices.length == 0){
             console.log('Novos dados');
             data = this.state.manager.loadPrices();
+            console.log(data);
         }else{
             console.log('Dados ja carregados');
             data = this.state.prices;

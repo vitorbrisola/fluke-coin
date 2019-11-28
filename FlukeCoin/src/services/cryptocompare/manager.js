@@ -18,12 +18,13 @@ export default class CurrencyManager {
     };
 
     loadPrices = () => {
-        prices = this.updatePrices();
+        //prices = this.updatePrices();
+        prices = this.mockPricesData();
         return prices
     };
 
     updatePrices = () => {
-        console.log('Prices loading started');
+        console.log('Updating Prices Data from server...');
 
         this.api.get(this.query)
             .then(response => {
@@ -34,11 +35,23 @@ export default class CurrencyManager {
                     this.prices = data;
             })
             .catch(error => { console.log(error.message)});
-        console.log('Prices loading finished')
 
         return this.prices;
     };
 
+    mockPricesData = () => {
+        console.log('Loading Mock Data...');
+        
+        const newPrices_raw = {
+            "BTC":  {"BRL": 32104.5, "EUR": 6801.66, "USD": 7479.99}, 
+            "ETH":  {"BRL": 648.51,  "EUR": 137.54,  "USD": 151.2},
+            "MOCK": {"BRL": 1.0,     "EUR": 1.0,     "USD": 1.0},
+        };
+        newPrices = dataPreprocessing(newPrices_raw);
+        this.prices = newPrices;
+
+        return newPrices;
+    };
 
 
 };
@@ -73,29 +86,14 @@ function currenciesPricesQuery(currencies_names,converted_currencies_names){
 function dataPreprocessing(data){
     newData = new Array;
     counter = 0;
-    console.log({"NewData": newData,"data":data});
 
     for (var crypto in data){
-
         newData.push({
             id: String(counter++),
             name: String(crypto),
             price: String(data[crypto]["USD"])
         });
     };
-    console.log({"NewData": newData})
 
     return (newData);
 };
-
-/*
-var fs = require('fs');
-function jsonWrite(data){
-    var json = JSON.stringify(data);
-    
-
-    fs.writeFile('data.json', data, (err) => {
-        if (err) throw err;
-        console.log('Data written to file');
-    });
-};*/
