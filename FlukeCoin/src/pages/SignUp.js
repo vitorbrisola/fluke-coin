@@ -1,5 +1,5 @@
 import React from "react";
-import { View,Text } from "react-native";
+import { View } from "react-native";
 import { Card, Button, Input } from "react-native-elements";
 import { onSignIn } from "../user/auth";
 

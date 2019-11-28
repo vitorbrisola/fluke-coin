@@ -8,9 +8,10 @@ import { FontAwesome } from "react-native-vector-icons";
 
 import HomeScreen from './pages/home'
 import ExplorerScreen from './pages/explorer'
+import SignUp from "./pages/SignUp";
 
-import SignUp from "./pages_test/SignUp";
-//import SignIn from "./pages_test/SignIn";
+import SignIn from "./pages_test/SignIn";
+import ProfileScreen from "./pages_test/Profile"
 
 
 export const TabNavigator = createBottomTabNavigator({
@@ -29,15 +30,21 @@ export const SignedOut = createStackNavigator({
     screen: SignUp
   },
   SignIn: {
-    screen: ExplorerScreen
+    screen: SignIn
   }
+});
+
+export const SignedIn = createBottomTabNavigator({
+  Home: {screen: HomeScreen},
+  Explorer: {screen: ExplorerScreen},
+  Profile: {screen:ProfileScreen}
 });
 
 export const createRootNavigator = (signedIn = false) => {
     return createSwitchNavigator(
       {
         SignedIn: {
-          screen: TabNavigator
+          screen: SignedIn
         },
         SignedOut: {
           screen: SignedOut
