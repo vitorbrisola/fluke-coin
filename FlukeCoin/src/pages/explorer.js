@@ -10,15 +10,13 @@ import React,{useEffect, Component} from 'react';
 import { 
     SafeAreaView,
     StyleSheet,
-    Button,
-    FlatList,
     View,
     Text,
 } from 'react-native';
 
 // render components
 import BottomTab from './components/tabs'
-import {CoinDisplay,CoinsList} from './components/coin'
+import CoinsList from './components/coin'
 // services
 import CurrencyManager from '../services/cryptocompare/manager'
 
@@ -80,13 +78,6 @@ const styles = StyleSheet.create({
         flex: 1, // make the container fill the screen
         backgroundColor: 'darkgreen',
         //marginTop: Constants.statusBarHeight,
-    },
-    coinContainer: {
-        //shape
-        height: 100, 
-        // position 
-        marginHorizontal: 30,
-        marginVertical: 20,
-    },
+    }
 });
 

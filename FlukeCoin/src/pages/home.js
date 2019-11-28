@@ -16,7 +16,7 @@ import {
 } from 'react-native';
 
 import BottomTab from './components/tabs'
-import CoinDisplay from './components/coin'
+import CoinsList from './components/coin'
 import CurrencyManager from '../services/cryptocompare/manager'
 
 
@@ -60,16 +60,7 @@ export default class HomeScreen extends Component {
             <SafeAreaView 
                 contentInsetAdjustmentBehavior="automatic"
                 style={styles.container}>
-                <FlatList
-                    data={this.state.data}
-                    keyExtractor={(item, key) => key.toString()}
-                    //renderItem={CoinDisplay}
-                    renderItem={({item}) =>
-                        <View style={styles.coinContainer}>
-                            <CoinDisplay name={item.name} price={item.price}/>
-                        </View>
-                    }
-                />
+                {CoinsList(this.state.data)}
                 <View>
                     {BottomTab(this.props)}
                 </View>
@@ -83,12 +74,5 @@ const styles = StyleSheet.create({
         flex: 1, // make the container fill the screen
         backgroundColor: '#3333',
         //marginTop: Constants.statusBarHeight,
-    },
-    coinContainer: {
-        //shape
-        height: 100, 
-        // position 
-        marginHorizontal: 30,
-        marginVertical: 20,
-    },
+    }
 });

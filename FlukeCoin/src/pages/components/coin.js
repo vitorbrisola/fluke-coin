@@ -7,9 +7,23 @@ import {
     FlatList,
 } from 'react-native';
 
+export default function CoinsList(coins){
+    return(
+        <FlatList
+            data={coins}
+            keyExtractor={(item, key) => key.toString()}
+            //renderItem={CoinDisplay}
+            renderItem={({item}) =>
+                <View style={styles.coinsListContainer}>
+                    <CoinDisplay name={item.name} price={item.price}/>
+                </View>
+            }
+        />
+    );
+};
 
 
-export default function CoinDisplay({name,price}){
+function CoinDisplay({name,price}){
     console.log(`Coin Loading ${name}`);
     return(
         <View 
@@ -20,25 +34,12 @@ export default function CoinDisplay({name,price}){
     );
 };
 
-export function CoinsList(coins){
-    return(
-        <FlatList
-            data={coins}
-            keyExtractor={(item, key) => key.toString()}
-            //renderItem={CoinDisplay}
-            renderItem={({item}) =>
-                <View style={styles.coinContainer}>
-                    <CoinDisplay name={item.name} price={item.price}/>
-                </View>
-            }
-        />
-    );
-}
+
 
 const styles = StyleSheet.create({
     container: {
         //shape
-        height: 100, 
+        height: '100%', 
         borderWidth: 2, 
         borderRadius: 5,
         // color
@@ -47,5 +48,12 @@ const styles = StyleSheet.create({
         // content
         padding: 20,    
         alignItems: 'center',
+    },
+    coinsListContainer: {
+        //shape
+        height: 100, 
+        // position 
+        marginHorizontal: 30,
+        marginVertical: 20,
     },
 });
