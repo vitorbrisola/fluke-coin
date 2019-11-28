@@ -56,18 +56,6 @@ export default class CurrencyManager {
 
 };
 
-
-function listToString(names){
-    string = '';
-    for (var name of names){
-        console.log(name)
-        string += name + ',';
-    };
-    // remove last coma
-    string = string.substring(0,string.length - 1);
-    return string;
-};
-
 function currenciesPricesQuery(currencies_names,converted_currencies_names){
     var currencies_list = '';
     var converted_currencies_list = '';
@@ -82,6 +70,18 @@ function currenciesPricesQuery(currencies_names,converted_currencies_names){
 
     return query;
 };
+
+function listToString(names){
+    string = '';
+    for (var name of names){
+        console.log(name)
+        string += name + ',';
+    };
+    // remove last coma
+    string = string.substring(0,string.length - 1);
+    return string;
+};
+
 
 function dataPreprocessing(data){
     newData = new Array;
