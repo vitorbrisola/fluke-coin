@@ -24,14 +24,12 @@ export default class CurrencyManager {
     };
 
     updatePrices = () => {
-        console.log('Updating Prices Data from server...');
+        //console.log('Updating Prices Data from server...');
 
         this.api.get(this.query)
             .then(response => {
                     data = response.data;
-                    console.log({'data':data});
                     data = dataPreprocessing(data);
-                    console.log({'data_preprocessed':data});
                     this.prices = data;
             })
             .catch(error => { console.log(error.message)});
@@ -74,7 +72,6 @@ function currenciesPricesQuery(currencies_names,converted_currencies_names){
 function listToString(names){
     string = '';
     for (var name of names){
-        console.log(name)
         string += name + ',';
     };
     // remove last coma

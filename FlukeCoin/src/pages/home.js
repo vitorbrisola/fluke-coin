@@ -31,13 +31,12 @@ export default class HomeScreen extends Component {
         console.log('Home');
         // manager setup
         if (this.state.manager == null){
-            console.log('New manager loading...');
+            //console.log('New manager loading...');
             const cur = ['BTC','ETH'];
             const conv = ['USD','EUR','BRL'];
             newManager = new CurrencyManager(cur,conv);
             await this.setState({manager:newManager})};
 
-        console.log('Loading data...')
         this.loadData();
     };
 
@@ -45,7 +44,7 @@ export default class HomeScreen extends Component {
         if(this.state.prices.length == 0){
             console.log('Novos dados');
             data = this.state.manager.loadPrices();
-            console.log(data);
+            //console.log(data);
         }else{
             console.log('Dados ja carregados');
             data = this.state.data;

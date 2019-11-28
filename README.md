@@ -37,6 +37,7 @@ This is an list of the main tasks and components that were crucial in the develo
     - [ ] Use __Font Awesome__
 - [x] Connect to __cryptocompare API__ using __Axios__.
     - [ ] Build data local cache.
+    - [ ] Use __AsyncStorage__
 - [ ] Build _sign in_ screen.
 - [ ] Build _sign up_ screen.
 - [ ] Build Authentication procress.

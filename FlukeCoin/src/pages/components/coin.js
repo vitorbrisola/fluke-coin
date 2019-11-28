@@ -24,7 +24,7 @@ export default function CoinsList(coins){
 
 
 function CoinDisplay({name,price}){
-    console.log(`Coin Loading ${name}`);
+    //console.log(`Coin Loading ${name}`);
     return(
         <View 
             style={styles.container}>

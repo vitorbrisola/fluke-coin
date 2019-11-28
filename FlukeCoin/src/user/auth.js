@@ -1,4 +1,4 @@
-import { AsyncStorage } from "react-native";
+import AsyncStorage from '@react-native-community/async-storage';
 
 export const USER_KEY = "auth-demo-key";
 
@@ -12,7 +12,7 @@ export const isSignedIn = () => {
       .then(res => {
         if (res !== null) {
           resolve(true);
-        } else {
+        } else {  
           resolve(false);
         }
       })

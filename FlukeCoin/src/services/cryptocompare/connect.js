@@ -15,7 +15,7 @@ CryptoApi.defaults.headers.common['Authorization'] = KEY.API;
 
 export function cryptoConnect(){
 
-    console.log('Connecting to server...')
+    //console.log('Connecting to server...')
     api = axios.create({
         baseURL: 'https://min-api.cryptocompare.com/data/',
     });
