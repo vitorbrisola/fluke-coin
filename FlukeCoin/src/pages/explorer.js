@@ -86,23 +86,12 @@ const styles = StyleSheet.create({
         backgroundColor: 'darkgreen',
         //marginTop: Constants.statusBarHeight,
     },
-    dualContainer: {
-        //shape
-        height: 100,
-        //position
-        marginHorizontal: 0,
-        marginVertical: 15,
-        //content
-        padding: 20,
-        flexDirection:"row",
-    },
     coinContainer: {
-        // shape
-        height: 90,
-        width: 140,
-        // position
+        //shape
+        height: 100, 
+        // position 
         marginHorizontal: 30,
-        marginVertical: 15,
+        marginVertical: 20,
     },
 });
 
