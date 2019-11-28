@@ -16,27 +16,8 @@ import {
 } from 'react-native';
 
 import BottomTab from './components/tabs'
+import CoinDisplay from './components/coin'
 import CurrencyManager from '../services/cryptocompare/manager'
-
-const DATA = [
-    {id: '5', name: 'Flukeco'},
-    {id: '0', name: 'Bitcoin'},
-    {id: '1', name: 'Ethereum'}, 
-    {id: '2', name: 'Litecoin'}, 
-    {id: '3', name: 'Zcash'}, 
-    {id: '4', name: 'Dash'},
-
-];
-
-
-function Item({ data }){
-    return(
-        <View 
-            style={styles.coinContainer}>
-            <Text>{data}</Text>        
-        </View>
-    );
-};
 
 
 export default class HomeScreen extends Component {
@@ -48,20 +29,19 @@ export default class HomeScreen extends Component {
     };
 
     componentDidMount = async () => {
-        console.log('Init Manager...')
-        const cur = ['BTC','ETH'];
-        const conv = ['USD','EUR','BRL'];
-
-        newManager = new CurrencyManager(cur,conv);
+        console.log('Home');
+        // manager setup
         if (this.state.manager == null){
-            console.log('new manager');
+            console.log('New manager loading...');
+            const cur = ['BTC','ETH'];
+            const conv = ['USD','EUR','BRL'];
+            newManager = new CurrencyManager(cur,conv);
             await this.setState({manager:newManager})};
-        console.log({'manager':this.state.manager})
+
         console.log('Loading data...')
         this.loadData();
     };
 
-    //loadData = async ( startDate = new Date()) => {};
     loadData = () => {
         if(this.state.prices.length == 0){
             console.log('Novos dados');
@@ -81,7 +61,8 @@ export default class HomeScreen extends Component {
                 style={styles.container}>
                 <FlatList
                     data={this.state.data}
-                    renderItem={({ item }) => <Item data={item.name} />}
+                    renderItem={({ item }) => 
+                    <View style={styles.coinContainer}><CoinDisplay coinInfo={item.name} /></View>}
                     keyExtractor={item => item.id}
                 />
                 <View>
@@ -101,18 +82,8 @@ const styles = StyleSheet.create({
     coinContainer: {
         //shape
         height: 100, 
-        borderWidth: 2, 
-        borderRadius: 5,
-        // color
-        borderColor: 'lightgreen', 
-        backgroundColor: '#FFFF',
         // position 
         marginHorizontal: 30,
         marginVertical: 20,
-        // content
-        padding: 20,    
-        alignItems: 'center',
     },
 });
-
-//export default App;

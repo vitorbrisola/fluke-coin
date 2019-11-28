@@ -91,7 +91,7 @@ function dataPreprocessing(data){
         newData.push({
             id: String(counter++),
             name: String(crypto),
-            price: String(data[crypto]["USD"])
+            price: Number(data[crypto]["USD"])
         });
     };
 

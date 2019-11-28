@@ -16,86 +16,47 @@ import {
     Text,
 } from 'react-native';
 
+// render components
 import BottomTab from './components/tabs'
-import currenciesPriceQuery from '../services/cryptocompare/currency'
-import CryptoApi from '../services/cryptocompare/connect'
-
-const DATA = [
-    {id: '5', name: 'Flukeco'},
-    {id: '0', name: 'Bitcoin'},
-    {id: '1', name: 'Ethereum'}, 
-    {id: '2', name: 'Litecoin'}, 
-    {id: '3', name: 'Zcash'}, 
-    {id: '4', name: 'Dash'},
-
-];
+import CoinDisplay from './components/coin'
+// services
+import CurrencyManager from '../services/cryptocompare/manager'
 
 
-function Item({item}){
-    return(
-        <View 
-            style={styles.dualContainer}>
-            <View style={styles.coinContainer}>
-                <Text>{item}</Text>
-            </View>
-            <View style={styles.coinContainer}><Text>{item}</Text></View>         
-        </View>
-
-    );
-};
-
-//const App: () => React$Node = () => {
 export default class ExplorerScreen extends Component {
 
     state = {
         data: [],
+        manager: null,
+        prices: [],
     };
 
-    componentDidMount(){
+    componentDidMount = async () => {
+        console.log('Explorer');
+
+        // manager setup
+        if (this.state.manager == null){
+            console.log('New manager loading...');
+            const cur = ['BTC','ETH'];
+            const conv = ['USD','EUR','BRL'];
+            newManager = new CurrencyManager(cur,conv);
+            await this.setState({manager:newManager});
+        };
+        
+        console.log('Loading data...')
         this.loadData();
     };
 
-    dataPreprocessing = (data) => {
-        newData = new Array;
-        counter = 0;
-        console.log({"NewData": newData,"data":data});
-
-        for (var crypto in data){
-
-            newData.push({
-                id: String(counter++),
-                name: String(crypto),
-                price: String(data[crypto]["USD"])
-            });
-        };
-        console.log({"NewData": newData})
-
-        return (newData);
-    };
-
     loadData =  () => {
-        const cur = ['BTC','ETH'];
-        const conv = ['USD','EUR','BRL']
-
-        data = null
-
-        // api prices loading
-        query = currenciesPriceQuery(cur,conv);
-        console.log(query)
-        //console.log(CryptoApi.baseURL);
-        console.log('get started')
-        CryptoApi.get(query)
-            .then(response => {
-                data = response.data;
-                console.log({'data':data});
-                data = this.dataPreprocessing(data);
-                console.log({'data_preprocessed':data});
-                this.setState({ data: data }); 
-                //console.log({'response':response,'data':data});
-            })
-            .catch(error => { console.log(error.message)});
-        console.log('get finished')
-               
+        if(this.state.prices.length == 0){
+            console.log('Novos dados');
+            data = this.state.manager.loadPrices();
+            console.log(data);
+        }else{
+            console.log('Dados ja carregados');
+            data = this.state.prices;
+        };
+        this.setState({data:data});
     };
     
 
@@ -106,7 +67,8 @@ export default class ExplorerScreen extends Component {
                 style={styles.container}>
                 <FlatList
                     data={this.state.data}
-                    renderItem={({ item }) => <Item data={item.name} />}
+                    renderItem={({ item }) => 
+                    <View style={styles.coinContainer}><CoinDisplay coinInfo={item.name} /></View>}
                     keyExtractor={item => item.id}
                 />
                 <View>
@@ -136,19 +98,11 @@ const styles = StyleSheet.create({
     },
     coinContainer: {
         // shape
-        height: 75,
+        height: 90,
         width: 140,
-        borderWidth: 2, 
-        borderRadius: 5,
         // position
-        marginHorizontal: 10,
-        marginVertical: 0,
-        // color
-        backgroundColor: '#FFFF', 
-        borderColor: 'green',
-        // content
-        padding: 0,
-        alignItems: 'center',
+        marginHorizontal: 30,
+        marginVertical: 15,
     },
 });
 
