@@ -33,13 +33,6 @@ const SignUp = ({navigation}) => (
           onSignIn().then(() => navigation.navigate("SignedIn"));
         }}
       />
-      <Button
-        buttonStyle={{ marginTop: 20 }}
-        backgroundColor="transparent"
-        textStyle={{ color: "#bcbec1" }}
-        title="Sign In"
-        onPress={() => navigation.navigate("SignIn")}
-      />
     </Card>
   </View>
 );

@@ -5,7 +5,7 @@
 import React, {Component} from 'react';
 //import {AppRegistry} from 'react-native';
 import { isSignedIn } from "./user/auth";
-import {rootNavigator,rootNavigator2} from './router';
+import rootNavigator from './router';
 
 export default class App extends Component {
 
@@ -36,7 +36,7 @@ export default class App extends Component {
         }
     
         //const Layout = rootNavigator
-        const Layout = rootNavigator2(signedIn);
+        const Layout = rootNavigator(signedIn);
         return <Layout />;
     }
 
