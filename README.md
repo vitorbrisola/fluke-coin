@@ -61,7 +61,11 @@ This is an list of the main tasks and components that were crucial in the develo
 >   - [ ] Menssagens de dados invalidos
 >   - [ ] Checkar validade/existencia de nome de usuario
 >- [x] Construir Tela de Autenticação.
->   - [ ] Construir Lógica de autenticação.
+>   - [x] Construir Lógica de autenticação.
+>   - [ ] Melhorar Logica de Authenticação.
+>   - [ ] Incluir aviso de dados invalidos.
+>- [ ] Salvar informações de usuário logado.
+>   - [ ] Display de informações de usuário na tela de Perfil.
 >- [ ] Salvar Moedas personalizadas por usuário.
 >- [ ] Adicionar Notificações
 >- [ ] Adicionar Informações de usuário
@@ -80,4 +84,11 @@ User credentials will consist of an __user name__ and an __password__, but user 
 
 #### Credential Data Storage
 As __AsyncStorage__ is an key-value database, credentials informations are stored in a key-value relation, where the __user name__ plus an __local storage key__ are joined as an string an stored as the __key__ and user __password__ and __email__ are joined by an string and store as the __value__.
+
+#### User Register
+>__[PT-BR]__ O registro de dados de usuários é feito localmente, a lógica de entrada e fluxo de informações de registro podem ser encontrados em _FlukeCoin/src/pages/signUp.js_.As informações registradas são simples: nome de usuário, email e senha. Ja a lógica de registro de dados do usuário pode ser encontrada em _FlukeCoin/src/user/singIn.js_
+Na __versão atual__ a aplicação verifica se todos os campos estão preenchidos antes de enviar as informações para registro local. Ao serem enviadas para o registro em
+>>__Limitações:__ Na versão atual a aplicação ainda apresenta alguma limitações:
+>>- Não é realizada a verificação de confirmação de senha.
+>>- Não é verificado a existencia de usuários com dados semelhantes já existentes no sistema.
 

@@ -10,7 +10,7 @@ import HomeScreen from './pages/home'
 import ExplorerScreen from './pages/explorer'
 import RegisterScreen from "./pages/signUp";
 import LoginScreen from "./pages/signIn";
-import ProfileScreen from "./pages/Profile"
+import ProfileScreen from "./pages/profile"
 
 
 
