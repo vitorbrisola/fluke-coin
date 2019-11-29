@@ -7,7 +7,7 @@ import {
     FlatList,
 } from 'react-native';
 
-export default function CoinsList(coins){
+export default function CoinsList({coins}){
     return(
         <FlatList
             data={coins}

@@ -15,7 +15,6 @@ import {
 } from 'react-native';
 
 // render components
-import BottomTab from './components/tabs'
 import CoinsList from './components/coin'
 // services
 import CurrencyManager from '../services/cryptocompare/manager'
@@ -63,8 +62,8 @@ export default class ExplorerScreen extends Component {
             <SafeAreaView 
                 contentInsetAdjustmentBehavior="automatic"
                 style={styles.container}>
-                {CoinsList(this.state.data)}
-                </SafeAreaView>
+                <CoinsList coins={this.state.data} />
+            </SafeAreaView>
         );
     }
 };

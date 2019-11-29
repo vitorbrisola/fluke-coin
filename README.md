@@ -1,8 +1,11 @@
 # Fluke Coin
 
 Fluke Coin is an ios and android application build with react-native. This application makes easy the tracking of cryptocurrency price changes.
+>__Warning:__ The aplication usage will require the user to have and set an cryptocompare API key. The api key can be set under __FlukeCoin/src/services/cryptocompare/connect.js__.
+
 > __[PT-BR]__ 
 > Fluke Coin é uma aplicação android e ios construída com react-native. Essa aplicação tem a intenção  de facilitar o acompanhamento de mudanças de preços em diferentes cryptomoedas.
+>> __Atenção:__ Antes de iniciar a aplicação é necessário obter um chave para a API cryptocompare. Apos obter uma chave o usuário pode mudar-la em __FlukeCoin/src/services/cryptocompare/connect.js__.
 
 ## UI and UX Design
 
@@ -14,7 +17,12 @@ The intent of this application is to make easy the tracking of users preferred c
 >- Fácil vizualização da muança de preço e preço atual de cryptomoedas escolhidas pelo usuário.
 >- Fácil busca e sugestões de novas cryptomoedas.
 
+### UI flow
+The image bellow shows the inital design for the screen flow. Besides, the login and sign up screens, there are only two main screens:
+- __Home Screen:__ Is were  the user can see information about the cryptocurrencies he chooses to follow.
+- __Explorer Screen:__ Is were the user can find and search for new coins to follow.
 
+![Screen flow](/imgs/flukeCoin.png)
 
 
 ## Development Process
@@ -70,9 +78,6 @@ This is an list of the main tasks and components that were crucial in the develo
 >- [ ] Adicionar Notificações
 >- [ ] Adicionar Informações de usuário
 
-### Currency Display
-
-### User Screen Navigation
 
 ### Cryptocompare API Management
 

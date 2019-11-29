@@ -14,7 +14,6 @@ import {
     Text,
 } from 'react-native';
 
-import BottomTab from './components/tabs'
 import CoinsList from './components/coin'
 import CurrencyManager from '../services/cryptocompare/manager'
 
@@ -58,8 +57,7 @@ export default class HomeScreen extends Component {
             <SafeAreaView 
                 contentInsetAdjustmentBehavior="automatic"
                 style={styles.container}>
-                {CoinsList(this.state.data)}
-
+                <CoinsList coins={this.state.data} />
             </SafeAreaView>
         );
     }
