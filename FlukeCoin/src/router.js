@@ -9,7 +9,7 @@ import {createBottomTabNavigator} from 'react-navigation-tabs';
 import HomeScreen from './pages/home'
 import ExplorerScreen from './pages/explorer'
 import RegisterScreen from "./pages/signUp";
-import SignIn from "./pages/SignIn";
+import LoginScreen from "./pages/signIn";
 import ProfileScreen from "./pages/Profile"
 
 
@@ -52,8 +52,6 @@ export const SignedIn = createBottomTabNavigator({
 });
 
 export const SignedOut = createStackNavigator({
-  SignIn: {
-    screen: SignIn
-  },
+  SignIn: {screen: LoginScreen},
   SignUp: {screen: RegisterScreen}
 });
