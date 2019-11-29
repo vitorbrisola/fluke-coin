@@ -4,14 +4,13 @@ import { Platform, StatusBar } from "react-native";
 import {createAppContainer, createSwitchNavigator } from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
-import { FontAwesome } from "react-native-vector-icons";
+
 
 import HomeScreen from './pages/home'
 import ExplorerScreen from './pages/explorer'
-import SignUp from "./pages/SignUp";
+import RegisterScreen from "./pages/signUp";
 import SignIn from "./pages/SignIn";
 import ProfileScreen from "./pages/Profile"
-
 
 
 
@@ -56,5 +55,5 @@ export const SignedOut = createStackNavigator({
   SignIn: {
     screen: SignIn
   },
-  SignUp: {screen: SignUp}
+  SignUp: {screen: RegisterScreen}
 });

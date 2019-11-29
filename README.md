@@ -62,3 +62,7 @@ This is an list of the main tasks and components that were crucial in the develo
 >- [ ] Adicionar Informações de usuário
 
 
+### User Data Management
+The user management consist of managing user credentials( sign in and sing up), personal data and tracking currencies information. 
+> __Note:__ As this is not an aplication with real use safety concerns, user data will be stored locally with the usage of react native __AsyncStorage__ for data persistence.
+User credentials will consist of an __user name__ and an __password__, but user personal data will also contain user __email__.
