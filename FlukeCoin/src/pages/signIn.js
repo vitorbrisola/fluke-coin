@@ -21,15 +21,27 @@ export default class LoginScreen extends Component {
     }else if(infoType == 'pass') {await this.setState({pass: info})};
   }
 
+  checkSystem = async () => {
+    return await new Promise((resolve,reject) => {
+      userSignIn({
+        userName: this.state.name,
+        password: this.state.pass
+      })
+        .then(res => {resolve(res)}
+        )
+    });
+  }
+
   userVerification = async () => {
-    await userSignIn({
-      userName: this.state.name,
-      password: this.state.pass
+   await this.checkSystem()
+    .then(userIsOnSystem => {
+      if(userIsOnSystem){
+        console.log('User Registered!')
+        onSignIn().then(() => this.props.navigation.navigate("SignedIn"));
+      }else{
+        console.log('User not Registered!')
+      }
     })
-      .then(
-        response => {console.log(response)}
-      )
-    //onSignIn().then(() => this.props.navigation.navigate("SignedIn"));
   }
 
   render() {
