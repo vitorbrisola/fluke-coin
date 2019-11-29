@@ -1,39 +1,42 @@
 import AsyncStorage from '@react-native-community/async-storage';
 import KEY from '../private/keys'
 
-export default ({userName,password,email}) => {
+export default userSignUp = async ({userName,password,email}) => {
     // (!) Here you should set your local storage key (!)
-    key = str(userName) + KEY.STORAGE;
-    value = 'pass-'+str(password)+'-email-'+str(email);
+    key = userName + KEY.STORAGE;
+    value = 'pass-'+password+'-email-'+email;
     
+    //console.log('Validation checking...')
     // validation check
-    isValid,message = isValidKeys({key,password,email});
-    if(!isValid){return message}
+    //var isValid = false;
+    //isValid = await isValidKeys({key,password,email})
+    //    .then(response => {return response})    
+    //if(!isValid){return 'Register Failed!'}
     
-    // storing data
-    try {
-      AsyncStorage.setItem(key,value);
-      return userName;
-    } catch (error) {
-        console.log(error.message);
-    }
+    
+    console.log('Data Storage..')
+    // storing datA
+    await AsyncStorage.setItem(key,value)
+        .then( response => {
+            console.log('User has been registered')
+            return userName
+        })
+        .catch(error => {console.log(error.message)});        
 }
 
-const isValidKeys = ({key,password,email}) => {
+const isValidKeys = async ({key,password,email}) => {
+    console.log('Name Checking')
     // user name duplicate check
-    try {
-        const value = AsyncStorage.getItem(key);
-        if( value != null){return false,'Invalid User Name!'}
-    } catch (error) {
-        console.log(error.message);
-    }
-    // email name duplicate check
-    try {
-        const value = AsyncStorage.getItem(email);
-        if( value != null){return false,'This email has already been registered!'}
-    } catch (error) {
-        console.log(error.message);
-    }
-       
-    return true,'success';
+    await AsyncStorage.getItem(key)
+          .then(res => {
+            console.log('Name Checked:'+res)
+            if (res !== null) {
+                console.log('Not null')
+                return(false)
+            } else {  
+                return(true);
+            }
+          })
+          .catch(err => console.log(err));
+   
 };

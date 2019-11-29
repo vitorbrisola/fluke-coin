@@ -14,11 +14,7 @@ The intent of this application is to make easy the tracking of users preferred c
 >- Fácil vizualização da muança de preço e preço atual de cryptomoedas escolhidas pelo usuário.
 >- Fácil busca e sugestões de novas cryptomoedas.
 
-### Currency Display
 
-### User Screen Navigation
-
-## API Communication
 
 
 ## Development Process
@@ -38,9 +34,11 @@ This is an list of the main tasks and components that were crucial in the develo
 - [x] Connect to __cryptocompare API__ using __Axios__.
     - [ ] Build data local cache.
     - [ ] Use __AsyncStorage__
-- [ ] Build _sign in_ screen.
-- [ ] Build _sign up_ screen.
-- [ ] Build Authentication procress.
+- [x] Build _sign up_ screen.
+    - [ ] Build registration logic.
+    - [ ] Double check user password.
+- [x] Build _sign in_ screen.
+    - [ ] Build user auth logic.
 - [ ] Save user currency options information.
 - [ ] Add Notifications.
 - [ ] Add user data to _upper tab_.
@@ -55,14 +53,31 @@ This is an list of the main tasks and components that were crucial in the develo
 >   - [ ] Usar __Font Awesome__
 >- [x] Conectar com API.
 >   - [ ] Construir Cache de dados.
->- [ ] Construir Tela de Autenticação.
->- [ ] Construir Tela de Cadastro.
+>- [x] Construir Tela de Cadastro.
+>   - [x] Construir lógica de registro.
+>   - [ ] Repassar info de usuario com proxima tela.
+>   - [ ] Construir resposta de checagem dobrada de senha.
+>   - [ ] Resolver __bug__ de persistencia de dados validos, quando sao invalidos
+>   - [ ] Menssagens de dados invalidos
+>   - [ ] Checkar validade/existencia de nome de usuario
+>- [x] Construir Tela de Autenticação.
+>   - [ ] Construir Lógica de autenticação.
 >- [ ] Salvar Moedas personalizadas por usuário.
 >- [ ] Adicionar Notificações
 >- [ ] Adicionar Informações de usuário
 
+### Currency Display
+
+### User Screen Navigation
+
+### Cryptocompare API Management
 
 ### User Data Management
 The user management consist of managing user credentials( sign in and sing up), personal data and tracking currencies information. 
 > __Note:__ As this is not an aplication with real use safety concerns( except for user experience, that is the main priority) user data will be stored locally with the usage of react native __AsyncStorage__ for data persistence.
 User credentials will consist of an __user name__ and an __password__, but user personal data will also contain user __email__.
+>> __Warning:__ The user data local storage by __AsyncStorage__ will have some undesired consequences, as credentials and user data can be lost.
+
+#### Credential Data Storage
+As __AsyncStorage__ is an key-value database, credentials informations are stored in a key-value relation, where the __user name__ plus an __local storage key__ are joined as an string an stored as the __key__ and user __password__ and __email__ are joined by an string and store as the __value__.
+

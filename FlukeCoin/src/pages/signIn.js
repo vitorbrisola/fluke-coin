@@ -2,11 +2,34 @@ import React,{Component} from "react";
 import { View } from "react-native";
 import { Card, Button, Input} from "react-native-elements";
 import { onSignIn } from "../user/auth";
+import userSignIn from '../user/signIn'
 
 export default class LoginScreen extends Component {
   
   constructor(props){
     super(props);
+
+    this.state = {
+      name: null,
+      pass: null,
+    }
+  }
+
+  changeUserInfo = async (infoType,info) => {
+    console.log(infoType+':'+info)
+    if(infoType == 'name') {await this.setState({name: info})
+    }else if(infoType == 'pass') {await this.setState({pass: info})};
+  }
+
+  userVerification = async () => {
+    await userSignIn({
+      userName: this.state.name,
+      password: this.state.pass
+    })
+      .then(
+        response => {console.log(response)}
+      )
+    //onSignIn().then(() => this.props.navigation.navigate("SignedIn"));
   }
 
   render() {
@@ -16,20 +39,20 @@ export default class LoginScreen extends Component {
           <Input
             label='User'
             placeholder='User name...'
+            onChangeText={text => this.changeUserInfo('name',text)}
           />
           <Input
             secureTextEntry
             label='Password'
             placeholder='Password...'
+            onChangeText={text => this.changeUserInfo('pass',text)}
           />
 
           <Button
             buttonStyle={{ marginTop: 20 }}
             backgroundColor="#03A9F4"
             title="SIGN IN"
-            onPress={() => {
-              onSignIn().then(() => this.props.navigation.navigate("SignedIn"));
-            }}
+            onPress={this.userVerification}
           />
           <Button
             buttonStyle={{ marginTop: 20 }}
@@ -42,3 +65,5 @@ export default class LoginScreen extends Component {
     );
   }
 };
+
+
