@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-community/async-storage';
 import KEY from '../private/keys'
+import UserManager from './manager'
 
 export default userSignIn = async ({ userName, password }) =>{
     // (!) Here you should set your local storage key (!)
@@ -8,7 +9,14 @@ export default userSignIn = async ({ userName, password }) =>{
     return await new Promise((resolve,reject) => {
       console.log(key)
       isOnSystem({key,password})
-        .then(res => resolve(res))
+        .then(res => {
+          if(res == true){
+            console.log('User is onsystem: '+userName)
+            currentUser = new UserManager()
+            currentUser.set({name:userName})
+          }
+          resolve(res)
+        })
         .catch(err => reject(err))
     });
 

@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import { View } from "react-native";
 import { Card, Button, Text } from "react-native-elements";
 import { onSignOut } from "../user/auth";
-
+import UserManager from '../user/manager'
 
 export default class ProfileScreen extends Component{
 
@@ -11,9 +11,21 @@ export default class ProfileScreen extends Component{
     console.log('Profile..')
 
     this.state = {
-      userName: 'Vitor Brisola',
-      userInitials: 'VB'
+      userName: 'Carregando...',
+      userInitials: 'VB',
+      manager: null,
     }
+    this.setManager()
+  }
+
+  setManager = async () => {
+    userManager = new UserManager()
+    await userManager.get()
+      .then(name => {
+        console.log('Profile name:'+name)
+        initials = getInitials(name)
+        this.setState({userName:name,userInitials:initials,manager:userManager})
+      })
   }
 
   render(){
@@ -37,7 +49,7 @@ export default class ProfileScreen extends Component{
         <Button
           backgroundColor="#03A9F4"
           title="SIGN OUT"
-          onPress={() => onSignOut().then(() => navigation.navigate("SignedOut"))}
+          onPress={() => onSignOut().then(() => this.props.navigation.navigate("SignedOut"))}
         />
       </Card>
   </View>
@@ -47,3 +59,11 @@ export default class ProfileScreen extends Component{
 };
 
 
+function getInitials(name){
+  var names = name.split()
+  initials = ''
+  for (var word of names){
+    initials += word[0]
+  }
+  return initials;
+}

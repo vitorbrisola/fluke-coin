@@ -16,7 +16,6 @@ export default class LoginScreen extends Component {
   }
 
   changeUserInfo = async (infoType,info) => {
-    console.log(infoType+':'+info)
     if(infoType == 'name') {await this.setState({name: info})
     }else if(infoType == 'pass') {await this.setState({pass: info})};
   }
