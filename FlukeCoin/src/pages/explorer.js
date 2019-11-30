@@ -34,7 +34,7 @@ export default class ExplorerScreen extends Component {
         // manager setup
         if (this.state.manager == null){
             console.log('New manager loading...');
-            const cur = ['BTC','ETH'];
+            const cur = ['BTC','ETH','MOCK'];
             const conv = ['USD','EUR','BRL'];
             newManager = new CurrencyManager(cur,conv);
             await this.setState({manager:newManager});

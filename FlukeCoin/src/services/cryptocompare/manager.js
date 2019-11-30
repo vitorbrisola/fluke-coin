@@ -2,8 +2,6 @@ import KEY from '../../private/keys'
 import {cryptoConnect} from './connect'
 
 export default class CurrencyManager {
-    currencies = [];
-    exchanges = [];
     prices = [];
 
     constructor(currencies=[],exchanges=[]){
@@ -37,21 +35,26 @@ export default class CurrencyManager {
         return this.prices;
     };
 
+
     mockPricesData = () => {
         console.log('Loading Mock Data...');
-        
-        const newPrices_raw = {
-            "BTC":  {"BRL": 32104.5, "EUR": 6801.66, "USD": 7479.99}, 
-            "ETH":  {"BRL": 648.51,  "EUR": 137.54,  "USD": 151.2},
-            "MOCK": {"BRL": 1.0,     "EUR": 1.0,     "USD": 1.0},
-        };
-        newPrices = dataPreprocessing(newPrices_raw);
+        var rawPrices = {}
+        for (var currency of this.currencies){
+            rawPrices[currency] = mockPrices[currency]
+        }
+        newPrices = dataPreprocessing(rawPrices);
         this.prices = newPrices;
 
         return newPrices;
     };
 
 
+};
+
+const mockPrices = {
+    "BTC":  {"BRL": 32104.5, "EUR": 6801.66, "USD": 7479.99}, 
+    "ETH":  {"BRL": 648.51,  "EUR": 137.54,  "USD": 151.2},
+    "MOCK": {"BRL": 1.0,     "EUR": 1.0,     "USD": 1.0},
 };
 
 function currenciesPricesQuery(currencies_names,converted_currencies_names){
@@ -64,7 +67,7 @@ function currenciesPricesQuery(currencies_names,converted_currencies_names){
 
     query = `pricemulti?fsyms=${currencies_list}&tsyms=${converted_currencies_list}`;
     // authentication
-    query += `&api_key=${KEY.API}`
+    //query += `&api_key=${KEY.API}`
 
     return query;
 };

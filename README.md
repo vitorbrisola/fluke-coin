@@ -75,6 +75,9 @@ This is an list of the main tasks and components that were crucial in the develo
 >- [x] Salvar informações de usuário logado.
 >   - [x] Display de informações de usuário na tela de Perfil.
 >- [ ] Salvar Moedas personalizadas por usuário.
+>   - [x] Display de moedas do usuário
+>   - [ ] Adicionar e remover moedas
+>   - [ ] Armazenar no banco moedas do usuário
 >- [ ] Adicionar Notificações
 >- [ ] Adicionar Informações de usuário
 

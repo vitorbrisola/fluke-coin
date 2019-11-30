@@ -6,6 +6,11 @@ export default class UserManager {
     
     constructor(){
         this.name = null
+        this.coins = ['BTC','MOCK']
+    }
+
+    getCoins = () => {
+        return this.coins;
     }
 
     get = async () => {
