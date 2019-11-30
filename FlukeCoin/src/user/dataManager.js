@@ -47,9 +47,9 @@ export class Credentials {
 
     static set= async ({name,userData}) => {
         const key = name + credentialsKey
-        // userData = dataToString(userData)
+        var value = dataToString(userData)
         return await new Promise((resolve,reject) => {
-            AsyncStorage.setItem(key,userData)
+            AsyncStorage.setItem(key,value)
               .then(res => resolve(true))
               .catch(err => reject(err))
         });
@@ -76,4 +76,9 @@ function stringToData(string){
         email: eml
     }
     return data;
+};
+
+function dataToString(data){
+    string = 'pass-'+data.password+'-email-'+data.email;
+    return string
 };

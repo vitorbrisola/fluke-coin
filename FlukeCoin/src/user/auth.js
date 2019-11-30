@@ -58,6 +58,26 @@ function checkPassword(real,entry){
   return (real == entry);
 }
 
-export const Register = ({name,password,aditionalUserData}) => {
+export const Register = async ({name,password,email}) => {
+  return await new Promise((resolve,reject) => {
+    Credentials.check({name})
+      .then(async isRegistered =>{
+        if(!isRegistered){
 
+          await Credentials.set({name:name,userData:{password,email}})
+            .then( res => {
+              // current user setting
+              var currentUser = new UserManager()
+              currentUser.set({name:name})
+
+              res = {validation:res,message:'User has been registered!'}
+              resolve(res)
+            })
+        }else{
+          var response = {validation:false,message:'User name is taken!'}
+          resolve(response)
+        }
+      })
+      .catch(err => reject(err))
+  });
 };

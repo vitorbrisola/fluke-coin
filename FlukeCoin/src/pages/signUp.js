@@ -2,9 +2,9 @@ import React,{Component} from "react";
 import { View,TextInput } from "react-native";
 import { Card, Button, Input } from "react-native-elements";
 import { onSignIn } from "../user/auth";
-import userSignUp from '../user/signUp'
+//import userSignUp from '../user/signUp'
 import Icon from 'react-native-vector-icons/FontAwesome';
-
+import {Register} from '../user/auth'
 
 export default class RegisterScreen extends Component {
 
@@ -41,14 +41,20 @@ export default class RegisterScreen extends Component {
       return false
     }else{console.log('Dados validos')}
    
-    await userSignUp({
-      userName:this.state.name,
+    await Register({
+      name:this.state.name,
       password:this.state.pass,
       email:this.state.email
     })
-      .then((message)=>{console.log(message)})
+      .then(res =>
+        {
+          console.log(res.message)
+          if(res.validation == true){
+            onSignIn().then(() => this.props.navigation.navigate("SignedIn"));
+          }
+        })
     
-    onSignIn().then(() => this.props.navigation.navigate("SignedIn"));
+    
     
     return true
     

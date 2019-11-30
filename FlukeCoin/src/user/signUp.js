@@ -5,15 +5,7 @@ export default userSignUp = async ({userName,password,email}) => {
     // (!) Here you should set your local storage key (!)
     key = userName + KEY.STORAGE;
     value = 'pass-'+password+'-email-'+email;
-    
-    //console.log('Validation checking...')
-    // validation check
-    //var isValid = false;
-    //isValid = await isValidKeys({key,password,email})
-    //    .then(response => {return response})    
-    //if(!isValid){return 'Register Failed!'}
-    
-    
+
     console.log('Data Storage..')
     // storing datA
     await AsyncStorage.setItem(key,value)
