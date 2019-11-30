@@ -39,7 +39,7 @@ export default class LoginScreen extends Component {
     .then(userIsOnSystem => {
       if(userIsOnSystem){
         console.log('User Registered!')
-        onSignIn().then(() => this.props.navigation.navigate("SignedIn"));
+        onSignIn({user:this.state.name}).then(() => this.props.navigation.navigate("SignedIn"));
       }else{
         console.log('User not Registered!')
       }

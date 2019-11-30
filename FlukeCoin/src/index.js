@@ -6,6 +6,7 @@ import React, {Component} from 'react';
 //import {AppRegistry} from 'react-native';
 import { isSignedIn } from "./user/auth";
 import rootNavigator from './router';
+import userManager from './user/manager'
 
 export default class App extends Component {
 

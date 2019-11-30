@@ -43,10 +43,10 @@ This is an list of the main tasks and components that were crucial in the develo
     - [ ] Build data local cache.
     - [ ] Use __AsyncStorage__
 - [x] Build _sign up_ screen.
-    - [ ] Build registration logic.
+    - [x] Build registration logic.
     - [ ] Double check user password.
 - [x] Build _sign in_ screen.
-    - [ ] Build user auth logic.
+    - [x] Build user auth logic.
 - [ ] Save user currency options information.
 - [ ] Add Notifications.
 - [ ] Add user data to _upper tab_.
@@ -63,17 +63,17 @@ This is an list of the main tasks and components that were crucial in the develo
 >   - [ ] Construir Cache de dados.
 >- [x] Construir Tela de Cadastro.
 >   - [x] Construir lógica de registro.
->   - [ ] Repassar info de usuario com proxima tela.
+>   - [x] Repassar info de usuario com proxima tela.
 >   - [ ] Construir resposta de checagem dobrada de senha.
 >   - [ ] Resolver __bug__ de persistencia de dados validos, quando sao invalidos
 >   - [ ] Menssagens de dados invalidos
->   - [ ] Checkar validade/existencia de nome de usuario
+>   - [x] Checkar validade/existencia de nome de usuario
 >- [x] Construir Tela de Autenticação.
 >   - [x] Construir Lógica de autenticação.
->   - [ ] Melhorar Logica de Authenticação.
+>   - [x] Melhorar Logica de Authenticação.
 >   - [ ] Incluir aviso de dados invalidos.
->- [ ] Salvar informações de usuário logado.
->   - [ ] Display de informações de usuário na tela de Perfil.
+>- [x] Salvar informações de usuário logado.
+>   - [x] Display de informações de usuário na tela de Perfil.
 >- [ ] Salvar Moedas personalizadas por usuário.
 >- [ ] Adicionar Notificações
 >- [ ] Adicionar Informações de usuário

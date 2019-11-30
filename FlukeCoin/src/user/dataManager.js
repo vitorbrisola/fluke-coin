@@ -9,11 +9,7 @@
 
 import AsyncStorage from '@react-native-community/async-storage';
 
-
-
-export default class userDataManager {
-
-}
+export default class userDataManager {}
 
 const credentialsKey = 'fluke-key'
 

@@ -8,13 +8,14 @@
 
 import AsyncStorage from '@react-native-community/async-storage';
 import {Credentials} from './dataManager'
-import UserManager from './manager'
+import UserManager,{CurrentUser} from './manager'
 
 export const USER_KEY = "auth-demo-key";
 
 export const onSignIn = () => AsyncStorage.setItem(USER_KEY, "true");
 
 export const onSignOut = () => AsyncStorage.removeItem(USER_KEY);
+//export const onSignOut = () => CurrentUser.remove();
 
 export const isSignedIn = () => {
   return new Promise((resolve, reject) => {
