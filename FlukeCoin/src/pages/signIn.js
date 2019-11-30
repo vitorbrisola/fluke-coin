@@ -3,6 +3,8 @@ import { View } from "react-native";
 import { Card, Button, Input} from "react-native-elements";
 import { onSignIn } from "../user/auth";
 import userSignIn from '../user/signIn'
+import {Login} from '../user/auth'
+
 
 export default class LoginScreen extends Component {
   
@@ -22,11 +24,13 @@ export default class LoginScreen extends Component {
 
   checkSystem = async () => {
     return await new Promise((resolve,reject) => {
-      userSignIn({
-        userName: this.state.name,
+      Login({
+        name: this.state.name,
         password: this.state.pass
       })
-        .then(res => {resolve(res)}
+        .then(res => {
+          console.log(res.message)
+          resolve(res.validation)}
         )
     });
   }

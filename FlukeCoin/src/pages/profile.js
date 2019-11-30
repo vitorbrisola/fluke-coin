@@ -8,7 +8,6 @@ export default class ProfileScreen extends Component{
 
   constructor(props){
     super(props);
-    console.log('Profile..')
 
     this.state = {
       userName: 'Carregando...',
@@ -22,7 +21,6 @@ export default class ProfileScreen extends Component{
     userManager = new UserManager()
     await userManager.get()
       .then(name => {
-        console.log('Profile name:'+name)
         initials = getInitials(name)
         this.setState({userName:name,userInitials:initials,manager:userManager})
       })

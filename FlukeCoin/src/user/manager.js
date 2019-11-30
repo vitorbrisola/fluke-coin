@@ -11,7 +11,7 @@ export default class UserManager {
     get = async () => {
         if(this.name == null){
             console.log('Loading from data base...')
-            await this.getFromDataBase()
+            await this.getFromLocalStorage()
                 .then(res => {
                     console.log('db res:'+res)
                     this.name=res});
@@ -21,7 +21,7 @@ export default class UserManager {
         return this.name;
     }
 
-    getFromDataBase = async () => {
+    getFromLocalStorage = async () => {
         return await new Promise((resolve, reject) => {
             AsyncStorage.getItem(currentUserKey)
               .then(res => {
@@ -33,14 +33,25 @@ export default class UserManager {
     }
 
     set = async ({name}) => {
-        await this.setOnDataBase({name:name});
+        await this.setOnLocalStorage({name:name});
         this.name = name;
     };
 
-    setOnDataBase = async ({name}) =>{
-        console.log('[SET DB]Current User: '+name)
+    setOnLocalStorage = async ({name}) =>{
         return await new Promise((resolve,reject) => {
             AsyncStorage.setItem(currentUserKey,name)
+              .then(res => resolve(true))
+              .catch(err => reject(err))
+        });
+    }
+
+    remove = async () =>{
+
+    }
+
+    removeFromLocalStorage = async () => {
+        return await new Promise((resolve,reject) => {
+            AsyncStorage.setItem(currentUserKey)
               .then(res => resolve(true))
               .catch(err => reject(err))
         });
