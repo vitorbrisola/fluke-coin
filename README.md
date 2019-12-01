@@ -14,14 +14,17 @@ The intent of this application is to make easy the tracking of users preferred c
 - Easy finding and suggestions of new cryptocurrencys 
 > __[PT-BR]__ 
 > A intenção desta aplicação é facilitar o acompanhamento de mudanças no preço de cryptomoedas escolhidas pelo usuário. Portanto, podemos inferir algumas preferências do usuário com base nesse objetivo:
->- Fácil vizualização da muança de preço e preço atual de cryptomoedas escolhidas pelo usuário.
+>- Fácil vizualização da mudança de preço e preço atual de cryptomoedas escolhidas pelo usuário.
 >- Fácil busca e sugestões de novas cryptomoedas.
 
 ### UI flow
 The image bellow shows the inital design for the screen flow. Besides, the login and sign up screens, there are only two main screens:
 - __Home Screen:__ Is were  the user can see information about the cryptocurrencies he chooses to follow.
 - __Explorer Screen:__ Is were the user can find and search for new coins to follow.
-
+>__[PT-BR]:__
+>A imagem abaixo mostra o design inicial pretendido para a aplicação. Além, das telas de login e cadastro, o app contaria com 2 telas principais:
+- __Home:__ Uma tela pricial onde o usuário poderia ver a cotação das cryptomoedas seguidas por ele
+- __Explorer:__ Uma tela de exploração onde o usuário poderia ver informações de outras cryptomoedas e começar a seguir novas.
 ![Screen flow](/imgs/flukeCoin.png)
 
 
@@ -83,6 +86,8 @@ This is an list of the main tasks and components that were crucial in the develo
 
 
 ### Cryptocompare API Management
+>__[PT-BR]__ O gerenciamento da API, com realização de requests e armazenamento de informações em cache é está presente na pasta _'/FlukeCoin/src/sevices/cryptocompare/'_ . Além da conexão com a api foram implementados métodos de teste (com dados de teste para limitar o número de requests na api) e um método de request para crypto moedas determinadas, o qual seria utilizado para carregar informações novas sobre as moedas seguidas pelo usuário e para carregar dados de moedas na barra de busca.
+>Por fata de tempo, além das funcionalidades descritas, não foi implementado o carregamento de moedas na _top list_ para serem apresentadas na página de exploração e o armazenamento de dados em cache local para agilizar o carregamento e possibilitar o usuário de ver dados sobre suas moedas _offline_.
 
 ### User Data Management
 The user management consist of managing user credentials( sign in and sing up), personal data and tracking currencies information. 
@@ -99,4 +104,5 @@ Na __versão atual__ a aplicação verifica se todos os campos estão preenchido
 >>__Limitações:__ Na versão atual a aplicação ainda apresenta alguma limitações:
 >>- Não é realizada a verificação de confirmação de senha.
 >>- Não é verificado a existencia de usuários com dados semelhantes já existentes no sistema.
+>>- Não são apresentadas mensagens de erro ao não completar campos, usar nome de usuário já existentes e credenciais invalidas.
 
