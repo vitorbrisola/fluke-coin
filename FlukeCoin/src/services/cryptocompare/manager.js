@@ -24,6 +24,10 @@ export default class CurrencyManager {
         return prices
     };
 
+    getTopList = () => {
+
+    }
+
     updatePrices = async () => {
         //console.log('Updating Prices Data from server...');
 
@@ -63,7 +67,7 @@ const mockPrices = {
 
 function topListQuery(number = 10,exchange = 'USD'){
     var query = `/top/totalvolfull?limit=${number}&tsym=${exchange}`
-    query += `&api_key=${KEY.API}`
+    //query += `&api_key=${KEY.API}`
 
     return query
 }
