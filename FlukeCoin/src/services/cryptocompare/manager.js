@@ -8,27 +8,31 @@ export default class CurrencyManager {
         this.api = cryptoConnect();
         this.currencies = currencies;
         this.exchanges = exchanges;
+        this.prices = []
         this.setQuery();
     };
 
     setQuery(){
         this.query = currenciesPricesQuery(this.currencies,this.exchanges);
+        //this.query = topListQuery();
+        console.log(this.query)
     };
 
     loadPrices = () => {
-        //prices = this.updatePrices();
-        prices = this.mockPricesData();
+        prices = this.updatePrices();
+        //prices = this.mockPricesData();
         return prices
     };
 
-    updatePrices = () => {
+    updatePrices = async () => {
         //console.log('Updating Prices Data from server...');
 
-        this.api.get(this.query)
+        await this.api.get(this.query)
             .then(response => {
-                    data = response.data;
-                    data = dataPreprocessing(data);
-                    this.prices = data;
+                data = response.data;
+                console.log(data)
+                data = dataPreprocessing(data);
+                this.prices = data;
             })
             .catch(error => { console.log(error.message)});
 
@@ -57,6 +61,13 @@ const mockPrices = {
     "MOCK": {"BRL": 1.0,     "EUR": 1.0,     "USD": 1.0},
 };
 
+function topListQuery(number = 10,exchange = 'USD'){
+    var query = `/top/totalvolfull?limit=${number}&tsym=${exchange}`
+    query += `&api_key=${KEY.API}`
+
+    return query
+}
+
 function currenciesPricesQuery(currencies_names,converted_currencies_names){
     var currencies_list = '';
     var converted_currencies_list = '';
@@ -65,15 +76,15 @@ function currenciesPricesQuery(currencies_names,converted_currencies_names){
 
     converted_currencies_list = listToString(converted_currencies_names)
 
-    query = `pricemulti?fsyms=${currencies_list}&tsyms=${converted_currencies_list}`;
-    // authentication
+    var query = `pricemulti?fsyms=${currencies_list}&tsyms=${converted_currencies_list}`;
+
     //query += `&api_key=${KEY.API}`
 
     return query;
 };
 
 function listToString(names){
-    string = '';
+    var string = '';
     for (var name of names){
         string += name + ',';
     };

@@ -12,23 +12,27 @@ export default class App extends Component {
 
     constructor(props) {
         super(props);
-    
+
         this.state = {
           signedIn: false,
-          checkedSignIn: false
+          checkedSignIn: false,
+          user: null
         };
+        
     };
 
 
     componentDidMount() {
       console.log(`APP Started`);
       isSignedIn()
-        .then(res => this.setState({ signedIn: res, checkedSignIn: true }))
+        .then(res => {
+          this.setState({ signedIn: res, checkedSignIn: true })
+        })
         .catch(err => alert("An error occurred"));
     }
 
     render() {
-        const { checkedSignIn, signedIn } = this.state;
+        const { checkedSignIn, signedIn, user } = this.state;
         
         console.log(`APP Login, userSignIn = ${signedIn}`);
         // If we haven't checked AsyncStorage yet, don't render anything (better ways to do this)
@@ -37,7 +41,7 @@ export default class App extends Component {
         }
     
         //const Layout = rootNavigator
-        const Layout = rootNavigator(signedIn);
+        const Layout = rootNavigator(signedIn,user);
         return <Layout />;
     }
 

@@ -21,6 +21,13 @@ import UserManager from '../user/manager'
 
 export default class HomeScreen extends Component {
 
+
+    constructor(props){
+        super(props);
+
+        console.log('Home: '+this.props)
+    }
+
     state = {
         data: [],
         currencyManager: null,
@@ -48,10 +55,10 @@ export default class HomeScreen extends Component {
         this.loadData();
     };
 
-    loadData = () => {
-        if(this.state.prices.length == 0){
+    loadData = async () => {
+        if(this.state.data.length == 0){
             console.log('Novos dados');
-            data = this.state.currencyManager.loadPrices();
+            data = await this.state.currencyManager.loadPrices();
             //console.log(data);
         }else{
             console.log('Dados ja carregados');

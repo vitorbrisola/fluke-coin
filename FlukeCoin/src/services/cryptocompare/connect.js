@@ -21,7 +21,7 @@ export function cryptoConnect(){
     });
 
     // (!) HERE IS WERE YOU SHOULD SET YOU API KEY (!)
-    api.defaults.headers.common['Authorization'] = KEY.API;
+    //api.defaults.headers.common['Authorization'] = KEY.API;
 
     return api;
 };

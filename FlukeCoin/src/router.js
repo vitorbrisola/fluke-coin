@@ -15,13 +15,13 @@ import ProfileScreen from "./pages/profile"
 
 
 const rootNavigator = (signedIn = false) => {
-  console.log('root '+signedIn)
+  console.log('root '+ signedIn)
   return (createAppContainer(createRootNavigator(signedIn)));
 };
 export default rootNavigator;
 
 
-export const createRootNavigator = (signedIn = false) => {
+export const createRootNavigator = (signedIn = false, user) => {
   return createSwitchNavigator(
     {
       SignedIn: {screen: SignedIn},

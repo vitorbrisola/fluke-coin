@@ -8,7 +8,7 @@ export default class ProfileScreen extends Component{
 
   constructor(props){
     super(props);
-
+    
     this.state = {
       userName: 'Carregando...',
       userInitials: 'VB',

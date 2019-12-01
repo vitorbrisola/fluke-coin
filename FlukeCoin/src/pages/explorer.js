@@ -34,7 +34,7 @@ export default class ExplorerScreen extends Component {
         // manager setup
         if (this.state.manager == null){
             console.log('New manager loading...');
-            const cur = ['BTC','ETH','MOCK'];
+            const cur = ['BTC','ETH'];
             const conv = ['USD','EUR','BRL'];
             newManager = new CurrencyManager(cur,conv);
             await this.setState({manager:newManager});
@@ -44,10 +44,10 @@ export default class ExplorerScreen extends Component {
         this.loadData();
     };
 
-    loadData =  () => {
-        if(this.state.prices.length == 0){
+    loadData =  async () => {
+        if(this.state.data.length == 0){
             console.log('Novos dados');
-            data = this.state.manager.loadPrices();
+            data = await this.state.manager.loadPrices();
             console.log(data);
         }else{
             console.log('Dados ja carregados');
